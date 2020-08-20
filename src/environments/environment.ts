@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  firebase: {
+    apiKey: "AIzaSyCHGKYPFqAzE1qNQQhcd6nrHUoodv_0mQY",
+    authDomain: "agenda-fc3ca.firebaseapp.com",
+    databaseURL: "https://agenda-fc3ca.firebaseio.com",
+    projectId: "agenda-fc3ca",
+    storageBucket: "agenda-fc3ca.appspot.com",
+    messagingSenderId: "436856376664",
+    appId: "1:436856376664:web:0ac1c9eb71e69b1d48e92d",
+    measurementId: "G-TK7HQYZ8W8"
+  }
 };
 
 /*
