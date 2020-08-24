@@ -11,7 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
-import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreModule } 
+  from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [AppComponent],

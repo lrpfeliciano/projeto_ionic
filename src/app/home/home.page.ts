@@ -11,12 +11,17 @@ export class HomePage {
 
   constructor(private servico: PessoaService) {}
 
+  remover(id){
+    this.servico.excluir(id);
+  }
+
   ngOnInit(){
     this.servico.listar().subscribe(data => {
       this.pessoas = data.map(e => {
         return {
           id: e.payload.doc.id,
-          nome: e.payload.doc.data()['nome']
+          nome: e.payload.doc.data()['nome'],
+          email: e.payload.doc.data()['email']
         };
       }
       

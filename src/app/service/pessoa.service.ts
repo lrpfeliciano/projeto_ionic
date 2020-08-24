@@ -17,4 +17,25 @@ export class PessoaService {
   listar(){
     return this.firestore.collection('pessoa').snapshotChanges();
   }
+
+  excluir(id){
+    console.log(id);
+    this.firestore.doc('pessoa/'+id).delete();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
