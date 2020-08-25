@@ -23,8 +23,13 @@ export class PessoaService {
     this.firestore.doc('pessoa/'+id).delete();
   }
 
+  cadastrar(registro) {
+    return this.firestore.collection('pessoa').add(registro);
+  }  
 
-
+  alterar(id, registro) { 
+    return this.firestore.doc('pessoa/'+id).update(registro);
+  }
 
 
 

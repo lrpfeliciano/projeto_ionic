@@ -15,7 +15,9 @@
   </ion-header>
 
   <div id="container">
-    <ion-button color="primary" size="small">
+    <ion-button color="primary" size="small" 
+                routerLink="/formulario" 
+                routerDirection="forward">
       Cadastrar novo
     </ion-button>
 
@@ -25,7 +27,8 @@
         <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-button color="secondary" size="small">
+        {{item.telefone}}
+        <ion-button color="secondary" size="small" (click)="inicioAlteracao(item)">
           Editar
         </ion-button>
         <ion-button color="danger" size="small" (click)="remover(item.id)">

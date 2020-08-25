@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 import { PessoaService } from '../service/pessoa.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,10 +14,22 @@ import { PessoaService } from '../service/pessoa.service';
 export class HomePage {
   pessoas: any;
 
-  constructor(private servico: PessoaService) {}
+  constructor(private servico: PessoaService,
+              private route: ActivatedRoute,
+              private nav: NavController) {}
 
   remover(id){
     this.servico.excluir(id);
+  }
+
+  inicioAlteracao(registro){
+    console.log(registro);
+    console.log(registro.id);
+    this.nav.navigateForward( ['formulario', 
+            { id: registro.id, 
+              nome: registro.nome,
+              email: registro.email,
+              telefone: registro.telefone  }] );
   }
 
   ngOnInit(){
@@ -21,7 +38,8 @@ export class HomePage {
         return {
           id: e.payload.doc.id,
           nome: e.payload.doc.data()['nome'],
-          email: e.payload.doc.data()['email']
+          email: e.payload.doc.data()['email'],
+          telefone: e.payload.doc.data()['telefone']
         };
       }
       
