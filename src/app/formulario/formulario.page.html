@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>formulario</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -32,7 +35,8 @@
   
     <ion-row>
       <ion-col>
-          <ion-button (click)="salvar()">
+          <ion-button (click)="salvar()"
+            [disabled]="!nome || !email || !telefone">
             Ok
           </ion-button>
       </ion-col>

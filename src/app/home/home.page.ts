@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 import { PessoaService } from '../service/pessoa.service';
-
+import { AutenticacaoService } from '../service/autenticacao.service';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +16,43 @@ export class HomePage {
 
   constructor(private servico: PessoaService,
               private route: ActivatedRoute,
-              private nav: NavController) {}
+              private nav: NavController,
+              private alerta: AlertController,
+              private autServico: AutenticacaoService) {}
 
-  remover(id){
-    this.servico.excluir(id);
+
+  sair (){
+    this.autServico.logout().then(res => {
+      this.nav.navigateBack('');
+    })
+    .catch(error => {
+
+    })
+  }       
+       
+  async remover(id){
+    const mensagem = await this.alerta.create({
+      header: 'Atenção',
+      message: 'Deseja excluir esse contato?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.servico.excluir(id);
+          }
+        },
+        {
+          text: 'Cancelar',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+
+    await mensagem.present();
+
+    //this.servico.excluir(id);
   }
 
   inicioAlteracao(registro){

@@ -14,10 +14,13 @@ import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } 
   from 'angularfire2/firestore';
 
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],

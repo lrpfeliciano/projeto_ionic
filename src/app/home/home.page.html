@@ -1,9 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="primary" routerLink="/formulario">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" (click)="sair()">
+        Sair
+      </ion-button>
+
+    </ion-buttons>
     <ion-title>
-      Blank
+      Contatos
     </ion-title>
 
+  
   </ion-toolbar>
 </ion-header>
 
@@ -15,11 +25,6 @@
   </ion-header>
 
   <div id="container">
-    <ion-button color="primary" size="small" 
-                routerLink="/formulario" 
-                routerDirection="forward">
-      Cadastrar novo
-    </ion-button>
 
     <ion-card *ngFor="let item of pessoas">
       <ion-card-header> 

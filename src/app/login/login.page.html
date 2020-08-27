@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="validacao" (ngSubmit)="login(validacao.value)">
+    <ion-item>
+      <ion-input type="text" formControlName="email" placeholder="E-mail"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.email">
+        <div class="error-message"
+          *ngIf="validacao.get('email').hasError(m.type) 
+              && (validacao.get('email').dirty || validacao.get('email').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div> 
+
+    <ion-item>
+      <ion-input type="password" formControlName="senha"  placeholder="Senha"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.senha">
+        <div class="error-message"
+          *ngIf="validacao.get('senha').hasError(m.type) 
+              && (validacao.get('senha').dirty || validacao.get('senha').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div> 
+
+    
+    <ion-button type="submit" [disabled]="!validacao.valid">
+      Enviar
+    </ion-button>
+    <label class="error-message">{{mensagemErro}}</label>
+  </form>
+</ion-content>
